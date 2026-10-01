@@ -1,0 +1,380 @@
+/* ============================================================
+   חוברות הטיפים של שרה, דף נחיתה לנייד
+   הפונטים יושבים כקבצים ליד הדף, כך הדפדפן שומר אותם במטמון
+   ומכל החוברות הבאות הם נטענים מיד.
+   ============================================================ */
+
+@font-face{font-family:'Assistant';src:url('fonts/Assistant-400.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Assistant';src:url('fonts/Assistant-700.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Assistant';src:url('fonts/Assistant-800.ttf') format('truetype');font-weight:800;font-display:swap}
+@font-face{font-family:'Amatic SC';src:url('fonts/AmaticSC-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+
+:root{
+  --cream:#FBF6F0; --sand:#EADBC8; --espresso:#3A3026; --ink:#63594F;
+  --terracotta:#BF8560; --gold:#E3B266; --olive:#7B8C58; --olive-deep:#5B6A3F;
+  --gutter:20px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; overflow-x:hidden}  /* ענף שחורג מעבר לקצה לא יוצר גלילה לרוחב */
+body{
+  margin:0; color:var(--espresso);
+  background:var(--cream);
+  font-family:'Assistant',system-ui,sans-serif; direction:rtl; text-align:right;
+  font-size:18px; line-height:1.72;
+}
+/* 🔴 כל הדף יושב בעמודה אחת ברוחב אחיד, כולל הראש.
+   העמודה אטומה, ולכן דוגמת התחרה נראית רק בצדדים הריקים במחשב. */
+.col{
+  max-width:640px; margin:0 auto; background:var(--cream); min-height:100vh;
+  overflow-x:clip;
+  box-shadow:0 0 60px rgba(58,48,38,.07);
+}
+.wrap{padding:0 var(--gutter) 48px}
+
+/* ---------- ראש הדף, שער עם תמונה ---------- */
+/* 🔴 לפי הדוגמה של שרה, 28/09: תמונה על כל השער, רצועת קרם עם הכותרת
+   הגדולה, ומתחתיה שורה אחת עם הכיתוב מימין והלוגו הקטן משמאל.
+   ⏳ התמונה נכנסת ב---cover. עד שהיא מגיעה יש רקע חם במקומה. */
+.hero{position:relative; padding:0; margin:0; background:var(--cream)}
+
+/* 🔴 חלק ראשון, לפי שרה 28/09: כותרת גדולה, מתחתיה הכיתוב עם הלוגו הקטן
+   בצד, ומתחת לזה התמונה. ⛔ התמונה לא רקע, היא מתחת. */
+.band{padding:30px var(--gutter) 22px; text-align:center; container-type:inline-size}
+.hero h1{
+  font-family:'Amatic SC',cursive; font-weight:700; font-size:22.07cqw;
+  line-height:1; letter-spacing:1px; margin:0 0 14px; color:var(--olive-deep);
+  white-space:nowrap;
+}
+.hero .by{display:flex; align-items:center; justify-content:space-between; gap:14px}
+.hero .by p{margin:0; line-height:1.35; text-align:right}
+.hero .by b{display:block; font-size:19.5px; font-weight:800; color:var(--espresso)}
+.hero .by span{display:block; font-size:17px; color:var(--ink)}
+.hero .by img{width:58px; height:auto; flex:none; margin:0; order:2}
+
+.cover{margin:0 var(--gutter)}
+.cover img{display:block; width:100%; height:auto; border-radius:16px}
+
+.hero .sub{font-size:19px; font-weight:700; color:var(--olive-deep); margin:24px var(--gutter) 12px; line-height:1.5; text-align:center}
+.hero .say{font-size:17px; color:var(--ink); margin:24px var(--gutter) 0; line-height:1.72; text-align:right}
+.hero .say + .say{margin-top:14px}
+
+/* ---------- התרשימים של החתך ---------- */
+.dxwrap{margin-inline:auto}
+/* הכיתוב השמאלי רחב מהימני, ולכן הציור זז קצת ימינה כדי שהכל ישב במרכז. */
+.figure .dxstage{margin-inline:auto}
+.figure .dxstage{position:relative; container-type:inline-size; width:48%; margin-block:18px}
+.figure .dxstage img{display:block; width:100%; height:auto}
+.figure svg.dxlines{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; overflow:visible}
+.figure svg.dxlines line{stroke:#000; stroke-width:1.5; vector-effect:non-scaling-stroke; opacity:.75}
+.dxlab{
+  position:absolute; transform:translate(50%,-50%);
+  color:#000; font-weight:800; white-space:nowrap; line-height:1.3;
+  font-size:clamp(9px,5cqw,18px);
+  text-shadow:0 0 4px var(--cream),0 0 4px var(--cream),0 0 9px var(--cream);
+}
+/* כשהציור קטן הכיתוב יושב לצדו ולא עליו.
+   .rs נעצר בקצה הימני שלהטקסט, .ls בקצה השמאלי. */
+.dxlab.rs{transform:translate(0,-50%)}
+.dxlab.ls{transform:translate(100%,-50%)}
+
+/* ---------- הקופסה שמחזיקה את העובדה המרכזית ---------- */
+.keynote{
+  background:var(--olive-deep); color:var(--cream); border-radius:24px;
+  padding:22px 22px 24px; margin:26px 0 8px;
+}
+.keynote .tag{
+  display:block; font-size:13.5px; font-weight:800; letter-spacing:1.1px;
+  color:rgba(255,255,255,.72); margin-bottom:10px;
+}
+.keynote p{margin:0 0 12px; font-size:18px; line-height:1.7}
+.keynote p:last-child{margin-bottom:0}
+.keynote b{color:#fff}
+
+/* ---------- כותרת חלק ---------- */
+.part{margin:52px 0 16px}
+.part .n{
+  display:block; font-size:13.5px; font-weight:800; letter-spacing:1.1px;
+  color:var(--olive); margin-bottom:4px;
+}
+.part.b .n{color:var(--olive-deep)}
+.part.c .n{color:var(--terracotta)}
+.part h2{
+  font-family:'Amatic SC',cursive; font-weight:700; font-size:clamp(31px,7.4vw,40px);
+  line-height:1.12; letter-spacing:1.2px; margin:0 0 6px;
+}
+.part .note{margin:0; font-size:17px; color:var(--ink); line-height:1.65}
+
+/* כל תווית חלק (רקע, זיהוי, חלק א׳, הפתרון…) יושבת
+   באותה שורה עם הכותרת. שרה, 29/09. */
+.part h2.num{font-size:clamp(27px,6.3vw,35px)}
+.part h2 .n{
+  display:inline; margin:0; letter-spacing:.7px;
+  font-family:'Assistant',system-ui,sans-serif; font-size:.5em; font-weight:800;
+  vertical-align:.2em;
+}
+.part h2 .n::after{content:" · "; letter-spacing:0}
+.part .note + .note{margin-top:13px}
+
+/* 🔴 הפרדה בין חלק לחלק. שרה, 29/09:
+   "צריכות לשים משהו שיעזור להפריד בין חלק לחלק, זה קצת מת ככה, לא מבדילים,"
+   ואז: "אולי הראשון יהיה בלי כלום, פרק הבא עם מסגרת דקה בצבע ירוק או חום
+   כמו הכיתוב."
+   ולכן לסירוגין, וצבע המסגרת הוא צבע התווית של אותו חלק. */
+/* 🔴 29/09, שרה: "את המסגרת תנסי בצבע החום הבהיר שהשתמשת לכיתוב של
+   לא לשייף את הציפורן לבד בבית", כלומר --terracotta, ובכל החלקים. */
+.part.framed{
+  border:1.5px solid var(--terracotta); border-radius:24px;
+  padding:20px 18px 22px; margin-top:46px;
+}
+
+/* ---------- כרטיסי טיפ ---------- */
+ul.tips{list-style:none; margin:0; padding:0}
+ul.tips li{
+  padding:0 0 18px; margin-bottom:18px;
+  border-bottom:1px solid rgba(234,219,200,.9);
+  font-size:17px; line-height:1.68; color:var(--ink);
+}
+ul.tips li:last-child{border-bottom:0; margin-bottom:0; padding-bottom:0}
+ul.tips li b{display:block; font-size:18.5px; font-weight:800; color:var(--olive-deep); margin-bottom:5px; line-height:1.4}
+ul.tips.warn li b{color:var(--terracotta)}
+/* ⚠️ בתוך li כל <b> הופך לכותרת עם עלה, ולכן הדגשה בתוך משפט
+   נכתבת ב-<strong>. שרה, 29/09. */
+ul.tips li strong{font-weight:800; color:var(--espresso)}
+
+/* עלה עדין לפני כל סעיף בכל הרשימות. שרה, 29/09.
+   השורות הבאות מתיישרות לטקסט ולא לעלה. */
+ul.tips.leaf li b{padding-inline-start:25px; text-indent:-25px}
+ul.tips.leaf li b::before{
+  content:''; display:inline-block; vertical-align:-3px;
+  width:18px; height:18px; margin-inline-end:7px; text-indent:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%237B8C58%22 stroke-width=%221.7%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M20.5 3.5C20.5 13 13.5 20.5 4 20.5 4 11 11 3.5 20.5 3.5Z%22/%3E%3Cpath d=%22M4 20.5C9 15.5 14.5 9.5 20.5 3.5%22/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* ---------- נפתח בלחיצה ---------- */
+details{margin:26px 0 0; border-top:1px solid var(--sand); border-bottom:1px solid var(--sand)}
+/* 🔴 שרה, 29/09: "עוד דברים ששואלים אותי לא רואים מספיק,
+   הייתי רושמת ככותרת גדולה." ולכן Amatic בגודל של כותרת פרק. */
+details summary{
+  list-style:none; cursor:pointer; padding:18px 2px 16px;
+  font-family:'Amatic SC',cursive; font-weight:700;
+  font-size:clamp(27px,6.3vw,35px); line-height:1.15; letter-spacing:1.2px;
+  color:var(--espresso);
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+details summary::-webkit-details-marker{display:none}
+details summary:after{
+  content:'+'; font-family:'Assistant',system-ui,sans-serif;
+  font-weight:800; font-size:30px; line-height:1; color:var(--olive); flex:none;
+}
+details[open] summary:after{content:'–'}
+/* 🔴 שרה, 29/09: "הכיתוב בפנים צריך להיות גדול יותר וקריא."
+   ⚠️ ולכן דווקא כאן הטקסט גדול מ-17 של שאר החוברת, בכוונה. */
+details .in{padding:0 2px 24px; font-size:18px; line-height:1.78; color:var(--ink)}
+details .in p{margin:0 0 12px}
+details .in p:last-child{margin-bottom:0}
+details .in h3{font-size:20px; font-weight:800; color:var(--olive-deep); margin:20px 0 6px; line-height:1.35}
+details .in b{color:var(--espresso)}
+
+/* ---------- ציטוט ---------- */
+.quote{
+  border-inline-start:2px solid var(--olive); padding-inline-start:16px; margin:24px 0 0;
+  font-size:18.5px; font-weight:700; line-height:1.6; color:var(--olive-deep);
+}
+
+/* ---------- הסיום ---------- */
+/* הסיום: כפתור אחד ארוך ודק, ומתחתיו המקום בלבד.
+   ⛔ בלי מחיר. שרה, 28/09: "הם ישאלו אותי או שיראו בתפעולית כשיקבעו." */
+.cta{margin:36px 0 0; text-align:center}
+.cta a.btn{
+  display:block; background:var(--olive); color:#fff; text-decoration:none;
+  font-size:19px; font-weight:800; letter-spacing:.2px;
+  border-radius:99px; padding:15px 22px;
+}
+.cta .where{
+  margin:12px 0 0; font-size:16.5px; font-weight:600; color:var(--ink);
+}
+
+/* 🔴 שרה, 29/09: "אין מה להתבייש ויש מה לעשות, בשורה אחת גדולה." */
+.close{
+  font-family:'Amatic SC',cursive; font-weight:700;
+  font-size:clamp(24px,9.3vw,48px); white-space:nowrap;
+  line-height:1.2; letter-spacing:.6px; color:var(--olive-deep); text-align:center; margin:34px 0 0;
+}
+.sign{text-align:center; font-size:18px; font-weight:700; color:var(--olive-deep); margin:8px 0 0}
+.fine{font-size:14.5px; line-height:1.65; color:var(--ink); text-align:center; margin:26px 0 0}
+.foot{
+  text-align:center; margin:26px 0 0; padding-top:20px; border-top:1px solid var(--sand);
+  font-size:14.5px; color:var(--ink); line-height:1.8;
+}
+.foot img{width:54px; height:auto; opacity:.85; display:block; margin:0 auto 10px}
+
+
+/* ---------- תרשימים ---------- */
+.figure{margin:20px 0 0}
+.figure svg{display:block; width:100%; height:auto}
+.figure .cap{font-size:15.5px; line-height:1.6; color:var(--ink); text-align:center; margin:22px 4px 0}
+/* שני איורי המבנה של חלק ב׳, אחד ליד השני. שרה, 29/09:
+   "הייתי שמה את 2 התמונות אחת ליד השנייה בכלל."
+   ⛔ ואין עליהם חצים: "יש 2 חצים שלא קשורים לתמונה ובכלל לא מכוונים למלל."
+   הכיתוב יושב מתחת לכל איור, באותו מבנה של ארבעת המצבים. */
+.pair{display:grid; grid-template-columns:1fr 1fr; gap:20px 14px; margin:24px 0 34px}
+.pair .one{text-align:center}
+.pair img{display:block; width:100%; aspect-ratio:5/4; object-fit:contain; margin:0 auto 10px}
+.pair b{display:block; font-size:16.5px; font-weight:800; color:var(--olive-deep); line-height:1.3; margin-bottom:4px}
+.pair span{display:block; font-size:14.5px; line-height:1.55; color:var(--ink)}
+
+/* ארבעת המצבים */
+.states{display:grid; grid-template-columns:1fr 1fr; gap:22px 12px; margin:20px 0 0}
+.state{padding:6px 4px 10px; text-align:center}
+.state svg{display:block; width:112px; height:auto; margin:0 auto 10px}
+/* האיורים של שרה. גובה אחיד ולא רוחב, כדי שהאצבעות יראו באותו גודל. */
+.state img{display:block; width:118px; height:auto; margin:0 auto 10px}
+.state b{display:block; font-size:16.5px; font-weight:800; color:var(--olive-deep); line-height:1.3; margin-bottom:3px}
+.state span{display:block; font-size:14.5px; line-height:1.5; color:var(--ink)}
+
+/* מה לא נכון לעשות */
+ul.tips.dont li{border-bottom-color:rgba(191,133,96,.3)}
+ul.tips.dont li b{color:var(--terracotta)}
+
+
+/* 🔴 חלק ג׳ בשתי עמודות. שרה, 29/09:
+   "את הבקבוק בצד שמאל והכיתוב בצד ימין, כל הפרק הזה ככה,
+   זה שובר קצת את המונוטוניות של הכיתוב."
+   ⛔ בעברית העמודה הראשונה ב-DOM היא הימנית, ולכן הרשימה ראשונה. */
+.sidepic{display:grid; grid-template-columns:1fr 31%; gap:0 16px; align-items:start; margin-top:8px}
+.sidepic figure.solo{margin:6px 0 0; position:sticky; top:14px}
+figure.solo{text-align:center}
+figure.solo img{display:block; width:100%; height:auto; margin-inline:auto; border-radius:14px}
+figure.solo figcaption{
+  margin-top:9px; font-size:13.5px; line-height:1.5; color:var(--ink);
+}
+
+/* ---------- סיפור הטיפול ---------- */
+.story{margin:20px 0 0}
+.story p{margin:0 0 20px; font-size:17px; line-height:1.72; color:var(--ink)}
+.story p:last-child{margin-bottom:0}
+.story b{color:var(--espresso)}
+/* 🔴 שרה, 29/09: "בתהליך פוטותרפיה את צריכה להוסיף גם בנקודות את העלים." */
+.story .step{
+  display:block; font-size:18.5px; font-weight:800; line-height:1.4;
+  color:var(--olive-deep); margin-bottom:5px;
+  padding-inline-start:25px; text-indent:-25px;
+}
+.story .step::before{
+  content:''; display:inline-block; vertical-align:-3px;
+  width:18px; height:18px; margin-inline-end:7px; text-indent:0; letter-spacing:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%237B8C58%22 stroke-width=%221.7%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M20.5 3.5C20.5 13 13.5 20.5 4 20.5 4 11 11 3.5 20.5 3.5Z%22/%3E%3Cpath d=%22M4 20.5C9 15.5 14.5 9.5 20.5 3.5%22/%3E%3C/svg%3E") center/contain no-repeat;
+}
+/* התמונות של הפוטותרפיה. שרה, 29/09:
+   "בכל שלב יש תמונה", ואז "לעשות 4 חלקים, כל 2 חלקים באותה שורה." */
+.story .shots{display:grid; grid-template-columns:1fr 1fr; gap:22px 14px; margin:20px 0 26px}
+.story .shot{margin:0}
+.story .shot img{
+  display:block; width:100%; aspect-ratio:1/1; object-fit:contain;
+  border-radius:14px;
+}
+.story .shot figcaption{
+  margin-top:8px; font-size:14.5px; line-height:1.5;
+  color:var(--ink); text-align:center;
+}
+
+.honest{
+  border-inline-start:2px solid var(--olive); padding:2px 0 2px 0;
+  padding-inline-start:16px; margin:24px 0 0;
+  font-size:17px; line-height:1.72; color:var(--espresso);
+}
+.honest b{font-weight:800}
+
+
+/* ---------- קביעת תור עדינה, חוזרת אחרי כל חלק ---------- */
+/* 🔴 שרה, 29/09: "כל הכפתורים בצבע כמו הכפתור האחרון."
+   ולכן ירוק מלא ולבן, בדיוק כמו .cta a.btn. */
+a.softcta{
+  display:block; text-align:center; margin:16px 0 0; text-decoration:none;
+  color:#fff; font-size:18px; font-weight:800; line-height:1.5; letter-spacing:.2px;
+  padding:14px 20px; border:0;
+  border-radius:99px; background:var(--olive);
+}
+a.softcta small{display:block; font-size:15px; font-weight:600; color:rgba(255,255,255,.88); margin-top:2px}
+
+/* חץ מצויר מעל הכפתור, שרה 28/09.
+   ⛔ בלי הבהוב: הוא מעייף בדף שקוראים בו. נדנוד עדין במקום. */
+.point{text-align:right; padding-inline-start:30px; margin:22px 0 -10px; line-height:0}
+.point svg{
+  width:56px; height:auto; display:inline-block; color:var(--olive);
+  animation:point-nudge 2.4s ease-in-out infinite;
+}
+.point svg path{fill:none; stroke:currentColor; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round}
+@keyframes point-nudge{0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)}}
+/* החץ השני, בצד שמאל והפוך. שרה, 29/09. */
+.point.left{text-align:left; padding-inline-start:0; padding-inline-end:30px}
+.point.left svg{transform:scaleX(-1); animation-name:point-nudge-flip}
+@keyframes point-nudge-flip{0%,100%{transform:scaleX(-1) translateY(0)} 50%{transform:scaleX(-1) translateY(6px)}}
+@media (prefers-reduced-motion:reduce){ .point svg{animation:none} }
+
+
+/* ---------- עיגול הוואטסאפ, צף ומשני ----------
+   ⚠️ משני בכוונה. הפעולה הראשית היא כפתור קביעת התור.
+   🔴 מפנה ל-058-7801908, הטלפון השני של שרה, ⛔ ולא למספר הבוט.
+   החלטת שרה 28/09/2026: מי שקרא חוברת ורוצה לשאול, יגיע אליה ולא לתפריט. */
+a.wabubble{
+  position:fixed; inset-block-end:18px; inset-inline-start:18px; z-index:50;
+  width:52px; height:52px; border-radius:50%; background:var(--olive);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 16px rgba(58,48,38,.22); text-decoration:none;
+}
+a.wabubble svg{width:28px; height:28px; display:block}
+a.wabubble .tip{
+  position:absolute; inset-inline-start:62px; white-space:nowrap;
+  background:var(--espresso); color:var(--cream); font-size:14px; font-weight:700;
+  padding:7px 13px; border-radius:99px; opacity:0; pointer-events:none;
+}
+@media (hover:hover){ a.wabubble:hover .tip{opacity:1} }
+/* שלא יכסה את סוף הדף */
+.wrap{padding-bottom:96px}
+
+
+/* ---------- ענפים בצדדים ----------
+   🔴 שרה, 28/09: "לא הדפס. הרגשה של טבע בצדדים, לא מלא פרחים קטנים.
+   פרח אחד גדול שתופס את כל הדף או 2, שלא יהיה הומוגני. אני אוהבת אי זוגי."
+   ולכן: שלושה ענפים, בגדלים שונים, לא סימטריים. */
+.deco{
+  position:fixed; z-index:0; pointer-events:none; user-select:none;
+  opacity:.62; filter:saturate(.7);
+}
+.deco.d1{ top:-70px;    right:calc(50% + 300px); width:300px; transform:rotate(14deg) }
+.deco.d2{ bottom:-90px; left:calc(50% + 288px);  width:370px; transform:scaleX(-1) rotate(9deg); opacity:.55 }
+.deco.d3{ top:42%;      left:calc(50% + 348px);  width:186px; transform:rotate(168deg); opacity:.45 }
+@media (max-width:1080px){ .deco{display:none} }
+
+.col{position:relative; z-index:1}
+
+/* ============================================================
+   מקום שמור לתמונה, עד ששרה שולחת אותה.
+   ⛔ מופיע רק בחוברות שעדיין נבנות. חוברת גמורה לא מכילה .ph
+   ============================================================ */
+.ph{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:6px; text-align:center;
+  border:2px dashed var(--terracotta); border-radius:16px;
+  background:rgba(191,133,96,.06);
+  padding:18px 14px; color:var(--ink);
+}
+.ph b{display:block; font-size:16px; font-weight:800; color:var(--terracotta); line-height:1.3}
+.ph span{display:block; font-size:14.5px; line-height:1.55; max-width:30ch}
+.ph-cover{min-height:210px}
+.ph-fig{min-height:190px; margin:18px var(--gutter) 0}
+.ph-state{min-height:118px; margin-bottom:10px}
+.ph-shot{aspect-ratio:1/1; margin-bottom:8px}
+.ph-solo{min-height:150px; border-radius:14px}
+.ph-q{border-right:3px solid var(--terracotta); padding-right:12px; color:var(--ink)}
+/* משבצת "לפני שזה מתחיל", ⛔ לא שלב של חודרנית אלא סימן אזהרה */
+/* ⛔ החום בוטל, שרה ביקשה שכל הכיתובים יהיו בירוק זית */
+
+/* 🔴 רשת זיהוי שבנויה מתמונות ולא מאיורי קו.
+   ⛔ מחלקה נפרדת בכוונה: חוברת הפטרת משתמשת ב-.state img הרגיל,
+   והוספת photo כאן לא נוגעת בה. */
+.states.photo .state img{
+  width:100%; height:auto; aspect-ratio:1/1; object-fit:cover;
+  border-radius:14px; margin:0 0 12px;
+}
