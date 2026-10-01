@@ -378,3 +378,31 @@ a.wabubble .tip{
   width:100%; height:auto; aspect-ratio:1/1; object-fit:cover;
   border-radius:14px; margin:0 0 12px;
 }
+/* תמונה שלישית ברשת של שתיים, תופסת את כל הרוחב */
+.shots .shot.wide{grid-column:1 / -1}
+.shots .shot.wide img{aspect-ratio:4/3}
+
+/* 🔴 תרשים החתך קטן יותר, כמו ב-.dxstage של חוברת הפטרת */
+.figure img.dx{display:block; width:78%; height:auto; margin:4px auto 0; border-radius:16px}
+/* תמונה בודדת רחבה בתוך סיפור הטיפול */
+figure.solo.wide-solo{margin:18px 0 6px}
+figure.solo.wide-solo img{width:100%; aspect-ratio:4/3; object-fit:cover}
+
+/* ============================================================
+   🔴 חוברת החודרנית, בקשת שרה 01/10: כל תמונה עד חצי רוחב העמודה.
+   ⛔ ממוקד ל-.col.small-pics בכוונה, כדי לא לגעת בחוברת הפטרת.
+   ============================================================ */
+.col.small-pics .cover img,
+.col.small-pics .figure img.dx,
+.col.small-pics figure.solo.wide-solo img{
+  width:45%; height:auto; aspect-ratio:auto; object-fit:contain;
+  margin-inline:auto; border-radius:14px;
+}
+.col.small-pics .cover{display:flex; justify-content:center}
+.col.small-pics figure.solo.wide-solo{text-align:center}
+
+/* 🔴 שרה, 01/10: עוד הקטנה. ארבע תמונות הזיהוי נשארות 2 ו-2 וקטנות יותר,
+   ושלוש תמונות הגשר יורדות לשורה אחת. */
+.col.small-pics .states.photo .state img{width:76%; margin-inline:auto}
+.col.small-pics .story .shots{grid-template-columns:repeat(3,1fr); gap:14px 9px}
+.col.small-pics .story .shot figcaption{font-size:13px; line-height:1.45}
