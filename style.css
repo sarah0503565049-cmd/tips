@@ -143,7 +143,13 @@ ul.tips li strong{font-weight:800; color:var(--espresso)}
 
 /* עלה עדין לפני כל סעיף בכל הרשימות. שרה, 29/09.
    השורות הבאות מתיישרות לטקסט ולא לעלה. */
-ul.tips.leaf li b{padding-inline-start:25px; text-indent:-25px}
+/* 🔴 שרה, 02/10: "בחלק מהפסקות השורה השניה מתחילה
+   לא בדיוק מתחת לשורה הראשונה."
+   ⛔ ההזחה ישבה על הכותרת בלבד, ולכן גוף הטקסט התיישר לעלה
+   ולא לטקסט שמעליו. ✅ ההזחה עוברת לפריט השלם,
+   והעלה לבדו יוצא החוצה. */
+ul.tips.leaf li{padding-inline-start:25px}
+ul.tips.leaf li b{padding-inline-start:0; text-indent:-25px}
 ul.tips.leaf li b::before{
   content:''; display:inline-block; vertical-align:-3px;
   width:18px; height:18px; margin-inline-end:7px; text-indent:0;
@@ -245,13 +251,28 @@ ul.tips.dont li b{color:var(--terracotta)}
 .sidepic figure.solo{margin:6px 0 0; position:sticky; top:14px}
 figure.solo{text-align:center}
 figure.solo img{display:block; width:100%; height:auto; margin-inline:auto; border-radius:14px}
+/* 🔴 שרה, 02/10: "מתחת לתמונות רק אם יש 2 שורות. במקרה של שורה אחת
+   ותמונה אחת ולא זוג, אפשר ליישר באמצע. אני רוצה אחידות במראה."
+   ⇐ ברירת המחדל ימין, ו-.mid למרכוז כיתוב של שורה אחת בלבד. */
 figure.solo figcaption{
   margin-top:9px; font-size:13.5px; line-height:1.5; color:var(--ink);
+  /* 🔴 הקופסה ממורכזת מתחת לתמונה, והטקסט בתוכה מיושר לימין.
+     ⛔ בלי fit-content הקופסה נמתחת לכל רוחב העמודה
+     והטקסט נדבק לקצה הדף במקום להישאר מתחת לתמונה. */
+  width:fit-content; max-width:78%; margin-inline:auto; text-align:right;
 }
 
 /* ---------- סיפור הטיפול ---------- */
 .story{margin:20px 0 0}
-.story p{margin:0 0 20px; font-size:17px; line-height:1.72; color:var(--ink)}
+/* 🔴 שרה, 02/10: "הטקסט לא מיושר לימין."
+   ⛔ .step נותן text-indent:-25px כדי שהעלה ייצא החוצה, והילדים יורשים אותו,
+   כך שהשורה הראשונה של כל בלוק פנימי נדחפת 25px ימינה. ⛔ מאפסים בילדים. */
+.story .step > p, .story .step > div, .story .step > figure{text-indent:0}
+/* 🔴 שרה, 02/10: "כשכל הכיתוב בבולד זה כבר מאבד את האפקט שלו."
+   ⛔ .step מוגדר font-weight:800 בשביל הכותרת, והפסקה יורשת אותו.
+   ✅ מאפסים בפסקה, כך שרק <strong> בתוכה באמת בולט. */
+.story .step > p{font-weight:400}
+.story p{margin:0 0 20px; font-size:17px; line-height:1.72; color:var(--ink); text-align:right}
 .story p:last-child{margin-bottom:0}
 .story b{color:var(--espresso)}
 /* 🔴 שרה, 29/09: "בתהליך פוטותרפיה את צריכה להוסיף גם בנקודות את העלים." */
@@ -406,3 +427,41 @@ figure.solo.wide-solo img{width:100%; aspect-ratio:4/3; object-fit:cover}
 .col.small-pics .states.photo .state img{width:76%; margin-inline:auto}
 .col.small-pics .story .shots{grid-template-columns:repeat(3,1fr); gap:14px 9px}
 .col.small-pics .story .shot figcaption{font-size:13px; line-height:1.45}
+
+/* ============================================================
+   🔴 שרה, 02/10 אחה"צ: "שיניתי טקסט מתחת לחלק מהתמונות
+   וזה לא מיושר לימין באמצע התמונה."
+   ⛔ הטעות שלי: קבעתי לקופסת הכיתוב 78% כשהתמונות היו רוחב מלא,
+   ובחוברות האלה התמונה היא 45%. לכן הכיתוב יצא רחב מהתמונה
+   והטקסט נחת מימין לקצה שלה. ✅ הכיתוב בדיוק ברוחב התמונה.
+   ============================================================ */
+.col.small-pics figure.solo.wide-solo figcaption{max-width:45%}
+
+/* 🔴 הכלל של שרה: "מתחת לתמונות רק אם יש 2 שורות. במקרה של
+   שורה אחת ותמונה אחת ולא זוג, אפשר ליישר באמצע."
+   ⛔ המחלקה .mid הופיעה ב-HTML ולא היה לה כלל בכלל. */
+figure.solo figcaption.mid{text-align:center}
+
+/* 🔴 שרה, 02/10: "תמונת השער קטנה מידי, תגדילי לכמעט כל הרוחב.
+   היא היחידה שגדולה בחוברת."
+   ⛔ כלל ה-45% נכתב לתמונות שבתוך הטקסט, והשער הוא לא כזה. */
+.col.small-pics .cover img{width:92%; aspect-ratio:auto; object-fit:contain}
+
+/* ============================================================
+   🔴 שרה, 02/10: "חלק מהתמונות עם פינות עגולות וחלק זווית 90.
+   תהפכי את כולם עם פינה מעוגלת."
+   ⛔ שלוש משפחות תמונות נשארו בלי רדיוס: זוג לפני-ואחרי,
+   ארבעת מצבי הזיהוי של הפטרת, ובמת התרשים.
+   🔴 העיגול הוא 14px בכל החוברות, והשער לבדו 16px כי הוא גדול.
+   ============================================================ */
+.pair img,
+.state img,
+.figure .dxstage img{border-radius:14px}
+
+/* 🔴 שרה, 02/10: "תגדילי עוד את השער של יבלות."
+   ⛔ ניסיתי לחתוך את שולי הנייר במקום להגדיל, וזה ⛔ לא עבד:
+   הניתזים של האקוורל מגיעים בכוונה עד קצה הקובץ.
+   ✅ ולכן השער יוצא מהשוליים ותופס את כל רוחב העמודה.
+   ⛔ מחלקה נפרדת בכוונה: שער ריבועי בחוברת אחרת יצא ענק ככה. */
+.col.small-pics .cover.wide{margin:0}
+.col.small-pics .cover.wide img{width:100%}
